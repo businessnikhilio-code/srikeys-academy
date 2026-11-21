@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Portal — SriKeys Academy of Music</title>
+<meta name="description" content="SriKeys student portal: profile, schedule, attendance, homework, report cards, fees and achievements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.webp">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="SriKeys Academy home">
+      <img src="assets/img/logo.webp" alt="SriKeys Academy of Music logo">
+      <span class="brand-text"><strong>SriKeys</strong><span>Student Portal</span></span>
+    </a>
+    <nav class="nav" aria-label="Portal">
+      <a href="index.html">Website</a>
+      <a href="library.html">Music Library</a>
+      <a href="portal.html" class="is-active">Student Portal</a>
+      <a href="admin.html">Admin View</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--ghost btn--sm" href="enrol.html">Enrol a sibling</a>
+      <a class="btn btn--primary btn--sm" href="#" id="portal-signout">Sign out</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="dash">
+  <aside class="sidebar">
+    <div class="side-user">
+      <span class="avatar" id="side-avatar">AM</span>
+      <div>
+        <strong id="side-name">Aarav Menon</strong>
+        <span id="side-meta">Grade 3 · Piano</span>
+      </div>
+    </div>
+
+    <p class="side-label">Student</p>
+    <div class="side-nav" id="portal-nav">
+      <button data-view="overview" class="is-active"><span class="ico">◈</span> Overview</button>
+      <button data-view="profile"><span class="ico">◉</span> Profile &amp; details</button>
+      <button data-view="course"><span class="ico">♬</span> Course &amp; grade</button>
+      <button data-view="schedule"><span class="ico">▦</span> Class schedule</button>
+      <button data-view="attendance"><span class="ico">✓</span> Attendance</button>
+      <button data-view="homework"><span class="ico">✎</span> Homework <span class="badge-count" id="hw-count">3</span></button>
+      <button data-view="progress"><span class="ico">◔</span> Progress &amp; reports</button>
+      <button data-view="achievements"><span class="ico">★</span> Achievements</button>
+      <button data-view="fees"><span class="ico">₹</span> Fees &amp; receipts</button>
+      <button data-view="library"><span class="ico">▤</span> Music library</button>
+    </div>
+  </aside>
+
+  <main class="dash-main">
+    <!-- OVERVIEW -->
+    <section class="view is-active" id="view-overview">
+      <div class="dash-head">
+        <div>
+          <h1>Good evening, <span id="greet-name">Aarav</span>.</h1>
+          <p id="overview-date">Saturday, 21 November 2026 · Week 12 of the academic year</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn--ghost btn--sm" href="#homework" data-goto="homework">View homework</a>
+          <a class="btn btn--primary btn--sm" href="#schedule" data-goto="schedule">Class schedule</a>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <span class="kpi-label">Next class</span>
+          <strong style="font-size:1.15rem;font-family:var(--sans);font-weight:800;margin-top:10px" id="kpi-next">Tue 24 Nov</strong>
+          <span class="kpi-sub" id="kpi-next-sub">5:00 pm · In studio</span>
+        </div>
+        <div class="kpi kpi--sage">
+          <span class="kpi-label">Attendance</span>
+          <strong id="kpi-attendance">96%</strong>
+          <span class="kpi-sub">Last 12 classes</span>
+        </div>
+        <div class="kpi kpi--orange">
+          <span class="kpi-label">Practice streak</span>
+          <strong id="kpi-streak">26 days</strong>
+          <span class="kpi-sub" id="kpi-points">480 points this month</span>
+        </div>
+        <div class="kpi kpi--amber">
+          <span class="kpi-label">Fees</span>
+          <strong id="kpi-fees" style="font-size:1.4rem">₹2,400</strong>
+          <span class="kpi-sub">Due 5 Dec 2026</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>This week's practice</h2>
+            <span class="hint">Tick tasks as you finish them</span>
+          </div>
+          <div id="overview-homework"></div>
+          <p class="small muted mt-2" id="overview-hw-note"></p>
+        </div>
+
+        <div class="stack-lg">
+          <div class="panel">
+            <div class="panel-head"><h2>Next class</h2></div>
+            <div id="next-class-card"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Latest report</h2><a class="link-arrow" href="#progress" data-goto="progress">Open</a></div>
+            <div id="overview-report"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Recent lessons</h2><a class="link-arrow" href="#attendance" data-goto="attendance">Attendance history</a></div>
+        <div class="mini-list" id="overview-lessons"></div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="view" id="view-profile">
+      <div class="dash-head"><div><h1>Profile &amp; personal details</h1><p>Your record at SriKeys Academy.</p></div></div>
+      <div style="display:grid;grid-template-columns:340px 1fr;gap:20px" class="profile-grid">
+        <div class="panel" style="text-align:center">
+          <span class="avatar" style="width:86px;height:86px;font-size:1.7rem;margin:6px auto 14px" id="profile-avatar">AM</span>
+          <h2 style="font-size:1.4rem;margin-bottom:2px" id="profile-name">Aarav Menon</h2>
+          <p class="muted small" id="profile-id">Student ID SK-2024-0148</p>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px">
+            <span class="pill pill--green">Active</span>
+            <span class="pill pill--amber" id="profile-grade">ABRSM Grade 3</span>
+          </div>
+          <div style="border-top:1px solid var(--line);margin-top:18px;padding-top:16px;text-align:left" id="profile-contact"></div>
+        </div>
+        <div>
+          <div class="panel">
+            <div class="panel-head"><h2>Personal details</h2><button class="btn btn--ghost btn--sm" id="edit-profile">Edit details</button></div>
+            <div class="table-wrap">
+              <table class="data" id="profile-table"></table>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Learning profile</h2></div>
+            <div class="table-wrap">
+              <table class="data" id="learning-table"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE -->
+    <section class="view" id="view-course">
+      <div class="dash-head"><div><h1>Course &amp; grade</h1><p>What you are working towards this year.</p></div></div>
+      <div class="kpis" id="course-kpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>Current course</h2><span class="hint">2026–27 academic year</span></div>
+        <div class="table-wrap"><table class="data" id="course-table"></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Graded pathway</h2></div>
+        <div class="table-wrap"><table class="data" id="pathway-table"></table></div>
+        <p class="form-note">Examination entry is confirmed with the family before any form is submitted. Mock exams are scheduled four weeks before the board date.</p>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="view" id="view-schedule">
+      <div class="dash-head">
+        <div><h1>Class schedule</h1><p>Your next five classes. Online links open 10 minutes before the lesson.</p></div>
+        <div style="display:flex;gap:10px"><button class="btn btn--ghost btn--sm" id="request-reschedule">Request reschedule</button></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Upcoming classes</h2><span class="hint">All times IST</span></div>
+        <div class="table-wrap"><table class="data" id="schedule-table"></table></div>
+      </div>
+      <div class="grid grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>Reschedule policy</h2></div>
+          <ul class="ticks">
+            <li>Notify us at least 12 hours before the class.</li>
+            <li>Rescheduled classes must be taken within the same month.</li>
+            <li>One goodwill make-up per term for late cancellations.</li>
+            <li>Extra classes are billed at the standard lesson rate.</li>
+          </ul>
+        </div>
+        <div class="panel" id="reschedule-panel" hidden>
+          <div class="panel-head"><h2>Request a reschedule</h2></div>
+          <form id="reschedule-form">
+            <div class="field"><label for="rs-class">Class</label>
+              <select id="rs-class" name="class" required></select>
+            </div>
+            <div class="field" style="margin-top:12px"><label for="rs-reason">Reason / preferred time</label>
+              <textarea id="rs-reason" name="reason" placeholder="e.g. School event — could we move to Thursday evening?"></textarea>
+            </div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Send request</button>
+            <p class="form-status" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATTENDANCE -->
+    <section class="view" id="view-attendance">
+      <div class="dash-head"><div><h1>Attendance</h1><p>Classes marked by your teacher within an hour of the lesson.</p></div></div>
+      <div class="kpis" id="attendance-kpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>Attendance history</h2><span class="hint">Last 12 classes</span></div>
+        <div class="table-wrap"><table class="data" id="attendance-table"></table></div>
+      </div>
+    </section>
+
+    <!-- HOMEWORK -->
+    <section class="view" id="view-homework">
+      <div class="dash-head">
+        <div><h1>Homework &amp; practice</h1><p>Everything set by your teachers, with sheet music and reference recordings.</p></div>
+        <span class="pill pill--orange" id="hw-pending-pill">3 pending</span>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Pending</h2><span class="hint">Tick a task when you have practised it</span></div>
+        <div id="homework-pending"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Completed</h2></div>
+        <div id="homework-done"></div>
+      </div>
+      <div class="panel" style="background:linear-gradient(150deg,#fdeccb,#fffaf0)">
+        <div class="panel-head"><h2>Practice streak</h2><span class="hint" id="streak-note">26 days · personal best 31</span></div>
+        <div class="streak-grid" id="streak-grid"></div>
+        <div class="streak-legend">
+          <span><i style="background:var(--orange)"></i>Full practice</span>
+          <span><i style="background:var(--amber)"></i>Short practice</span>
+          <span><i style="background:var(--cream-3)"></i>Rest day</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section class="view" id="view-progress">
+      <div class="dash-head">
+        <div><h1>Progress &amp; report cards</h1><p>Quarterly assessment from your teacher.</p></div>
+        <div class="tabs" id="report-tabs" style="margin:0">
+          <button class="is-active" data-term="current">Q3 2026</button>
+          <button data-term="q2">Q2 2026</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Repertoire progress</h2><span class="hint">Updated after each lesson</span></div>
+        <div id="repertoire-list"></div>
+      </div>
+
+      <div id="report-card"></div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Next-quarter learning goals</h2></div>
+        <ul class="ticks" id="report-goals"></ul>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="view" id="view-achievements">
+      <div class="dash-head">
+        <div><h1>Achievements &amp; rewards</h1><p>Badges, streaks and awards earned at SriKeys.</p></div>
+        <span class="pill pill--amber" id="points-pill">480 points</span>
+      </div>
+      <div class="kpis" id="reward-kpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>Badges</h2><span class="hint">4 of 8 earned</span></div>
+        <div class="badge-grid" id="badge-grid"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Awards</h2></div>
+        <div class="mini-list" id="awards-list"></div>
+      </div>
+    </section>
+
+    <!-- FEES -->
+    <section class="view" id="view-fees">
+      <div class="dash-head">
+        <div><h1>Fees &amp; receipts</h1><p>Invoices, payment history and downloadable receipts.</p></div>
+        <a class="btn btn--primary btn--sm" href="#fees" id="pay-now">Pay December fee</a>
+      </div>
+      <div class="kpis" id="fee-kpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>Invoices</h2><span class="hint">2026–27</span></div>
+        <div class="table-wrap"><table class="data" id="fees-table"></table></div>
+      </div>
+      <div class="panel" id="receipt-panel" hidden>
+        <div class="panel-head"><h2>Digital receipt</h2><button class="btn btn--ghost btn--sm" id="close-receipt">Close</button></div>
+        <div id="receipt-body"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Fee structure</h2></div>
+        <div class="table-wrap"><table class="data" id="fee-structure"></table></div>
+        <p class="form-note">Paid by UPI, bank transfer or card. Sibling discount of 10% applies to the second enrolment. Exam entry fees are billed separately at cost.</p>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="view" id="view-library">
+      <div class="dash-head">
+        <div><h1>Music library</h1><p>Picked for you by your teachers.</p></div>
+        <a class="btn btn--ghost btn--sm" href="library.html">Browse all 186 resources</a>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Recommended for Aarav</h2></div>
+        <div class="lib-grid" id="portal-library"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Your shelf</h2><span class="hint">Recently opened</span></div>
+        <div class="mini-list">
+          <div class="mini-row"><div class="date-chip"><strong>♪</strong><span>PDF</span></div><div class="mini-body"><strong>Minuet in G — annotated score</strong><span>Opened 2 days ago · Piano</span></div><button class="btn btn--ghost btn--sm">Open</button></div>
+          <div class="mini-row"><div class="date-chip"><strong>▷</strong><span>Video</span></div><div class="mini-body"><strong>Grade 3 scales — slow practice</strong><span>Opened last week · Technique</span></div><button class="btn btn--ghost btn--sm">Open</button></div>
+          <div class="mini-row"><div class="date-chip"><strong>✎</strong><span>PDF</span></div><div class="mini-body"><strong>Intervals worksheet 4</strong><span>Completed 21 Nov · Theory</span></div><button class="btn btn--ghost btn--sm">Open</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
