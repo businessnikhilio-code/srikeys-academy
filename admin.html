@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard — SriKeys Academy of Music</title>
+<meta name="description" content="SriKeys academy management: students, classes, attendance, fees, report cards, homework, library and announcements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.webp">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.webp" alt="SriKeys Academy of Music logo">
+      <span class="brand-text"><strong>SriKeys</strong><span>Admin Dashboard</span></span>
+    </a>
+    <nav class="nav" aria-label="Admin">
+      <a href="index.html">Website</a>
+      <a href="portal.html">Student Portal</a>
+      <a href="admin.html" class="is-active">Admin</a>
+      <a href="library.html">Library</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--ghost btn--sm" href="index.html">Exit dashboard</a>
+      <a class="btn btn--primary btn--sm" href="enrol.html">New admission</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="dash">
+  <aside class="sidebar">
+    <div class="side-user">
+      <span class="avatar" style="background:var(--cream-3);color:var(--ink)">SR</span>
+      <div>
+        <strong>Sridevi Raman</strong>
+        <span>Principal · Administrator</span>
+      </div>
+    </div>
+    <p class="side-label">Academy</p>
+    <div class="side-nav" id="admin-nav">
+      <button data-view="overview" class="is-active"><span class="ico">◈</span> Overview</button>
+      <button data-view="students"><span class="ico">◉</span> Students</button>
+      <button data-view="classes"><span class="ico">▦</span> Class management</button>
+      <button data-view="attendance"><span class="ico">✓</span> Attendance</button>
+      <button data-view="fees"><span class="ico">₹</span> Fees &amp; revenue</button>
+      <button data-view="reports"><span class="ico">◔</span> Report cards</button>
+      <button data-view="homework"><span class="ico">✎</span> Homework</button>
+      <button data-view="library"><span class="ico">▤</span> Learning materials</button>
+      <button data-view="announcements"><span class="ico">◉</span> Announcements</button>
+    </div>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-head">
+      <div>
+        <h1 id="admin-title">Academy overview</h1>
+        <p id="admin-sub">November 2026 · All figures update from the academy record</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn--ghost btn--sm" id="export-students">Export student list</button>
+        <a class="btn btn--primary btn--sm" href="#announcements" data-goto="announcements">Send announcement</a>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="view is-active" id="view-overview">
+      <div class="kpis">
+        <div class="kpi kpi--orange"><span class="kpi-label">Active students</span><strong id="kpi-total">9</strong><span class="kpi-sub" id="kpi-total-sub">1 paused</span></div>
+        <div class="kpi kpi--sage"><span class="kpi-label">New this month</span><strong id="kpi-new">3</strong><span class="kpi-sub">Admissions since 1 Nov</span></div>
+        <div class="kpi"><span class="kpi-label">Monthly income</span><strong id="kpi-income" style="font-size:1.45rem">₹1,42,500</strong><span class="kpi-sub">November 2026</span></div>
+        <div class="kpi kpi--amber"><span class="kpi-label">Pending fees</span><strong id="kpi-pending" style="font-size:1.45rem">₹9,600</strong><span class="kpi-sub" id="kpi-pending-sub">4 invoices</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Revenue · last six months</h2><span class="hint">Collected, net of refunds</span></div>
+          <div class="table-wrap"><table class="data" id="revenue-table"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Today's classes</h2><span class="hint" id="today-label">Saturday 21 Nov</span></div>
+          <div class="mini-list" id="today-classes"></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Recent admissions</h2><a class="link-arrow" href="#students" data-goto="students">All students</a></div>
+          <div class="table-wrap"><table class="data" id="recent-admissions"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Needs attention</h2></div>
+          <div class="mini-list" id="attention-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENTS -->
+    <section class="view" id="view-students">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Student database</h2>
+          <input id="student-search" placeholder="Search name, grade, teacher…" style="max-width:300px;padding:9px 12px;border:1px solid var(--line-strong);border-radius:9px;font-family:var(--sans);font-size:.85rem;background:var(--cream)">
+        </div>
+        <div class="table-wrap"><table class="data" id="students-table"></table></div>
+        <p class="form-note" id="student-count">10 students</p>
+      </div>
+
+      <div class="panel" id="student-detail">
+        <div class="panel-head"><h2 id="detail-title">Student profile</h2><span class="hint">Click any row to open a profile</span></div>
+        <div id="detail-body"><p class="empty-note">Select a student from the table above to see their profile, fee status and attendance.</p></div>
+      </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section class="view" id="view-classes">
+      <div style="display:grid;grid-template-columns:1.45fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Weekly class calendar</h2><span class="hint" id="week-label">Week of 23 November</span></div>
+          <div class="table-wrap"><table class="data" id="weekly-table"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Schedule a class</h2></div>
+          <form id="add-class-form">
+            <div class="field"><label for="cl-student">Student</label><select id="cl-student" required></select></div>
+            <div class="field" style="margin-top:10px"><label for="cl-day">Day</label>
+              <select id="cl-day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></div>
+            <div class="field" style="margin-top:10px"><label for="cl-time">Time</label><input id="cl-time" placeholder="5:00 pm" required></div>
+            <div class="field" style="margin-top:10px"><label for="cl-mode">Mode</label>
+              <select id="cl-mode"><option>In studio</option><option>Online</option></select></div>
+            <div class="field" style="margin-top:10px"><label for="cl-topic">Topic</label><input id="cl-topic" placeholder="e.g. Scales &amp; sight-reading" required></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Add to calendar</button>
+          </form>
+          <p class="form-note">New classes are added to the demo calendar. Online classes automatically get a joining link.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Class actions</h2><span class="hint">Cancel, reschedule or add an extra class</span></div>
+        <div class="table-wrap"><table class="data" id="class-actions"></table></div>
+        <p class="form-note">Cancellations notify the parent by WhatsApp and email in production. Extra classes are added to the next invoice.</p>
+      </div>
+    </section>
+
+    <!-- ATTENDANCE -->
+    <section class="view" id="view-attendance">
+      <div class="panel">
+        <div class="panel-head"><h2>Mark attendance</h2><span class="hint" id="att-date">Saturday 21 November 2026</span></div>
+        <div class="table-wrap"><table class="data" id="att-table"></table></div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
+          <span class="pill pill--green" id="att-present-pill">0 present</span>
+          <span class="pill pill--red" id="att-absent-pill">0 absent</span>
+          <span class="pill pill--grey" id="att-unmarked-pill">5 unmarked</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Monthly summary · November</h2></div>
+        <div class="kpis" style="margin-bottom:0">
+          <div class="kpi kpi--sage"><span class="kpi-label">Classes held</span><strong>284</strong><span class="kpi-sub">Across all teachers</span></div>
+          <div class="kpi kpi--orange"><span class="kpi-label">Extra classes</span><strong>12</strong><span class="kpi-sub">Billed this month</span></div>
+          <div class="kpi kpi--amber"><span class="kpi-label">Rescheduled</span><strong>9</strong><span class="kpi-sub">With notice</span></div>
+          <div class="kpi"><span class="kpi-label">Missed</span><strong>4</strong><span class="kpi-sub">No notice given</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEES -->
+    <section class="view" id="view-fees">
+      <div class="kpis" id="fee-kpis"></div>
+      <div class="panel">
+        <div class="panel-head"><h2>Outstanding &amp; recent invoices</h2><span class="hint">November–December 2026</span></div>
+        <div class="table-wrap"><table class="data" id="admin-fees-table"></table></div>
+        <p class="form-note">Marking an invoice paid records the payment date and unlocks the digital receipt for the parent.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Revenue by month</h2></div>
+          <div class="table-wrap"><table class="data" id="fee-revenue-table"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Discounts &amp; adjustments</h2></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Student</th><th>Adjustment</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Aarav Menon</strong></td><td>Sibling discount 10%</td><td>−₹240</td></tr>
+                <tr><td><strong>Diya Srinivasan</strong></td><td>Annual prepay (1 month free)</td><td>−₹1,800</td></tr>
+                <tr><td><strong>Rohan Mathew</strong></td><td>Exam fee waiver (hardship)</td><td>−₹1,200</td></tr>
+                <tr><td><strong>Meera Iyer</strong></td><td>Referral credit</td><td>−₹500</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section class="view" id="view-reports">
+      <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:20px;align-items:start" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Generate a report card</h2></div>
+          <form id="report-form">
+            <div class="field"><label for="rp-student">Student</label><select id="rp-student"></select></div>
+            <div class="field" style="margin-top:10px"><label for="rp-term">Term</label>
+              <select id="rp-term"><option>Quarter 4 · October – December 2026</option><option>Quarter 3 · July – September 2026</option></select></div>
+
+            <div style="margin-top:16px" id="slider-group">
+              <div class="field"><label>Technical skills <span class="muted" id="out-tech">4</span>/5</label><input type="range" id="rp-tech" min="1" max="5" value="4" style="padding:0;accent-color:var(--orange)"></div>
+              <div class="field" style="margin-top:10px"><label>Sight-reading <span class="muted" id="out-sight">3</span>/5</label><input type="range" id="rp-sight" min="1" max="5" value="3" style="padding:0;accent-color:var(--orange)"></div>
+              <div class="field" style="margin-top:10px"><label>Rhythm <span class="muted" id="out-rhythm">4</span>/5</label><input type="range" id="rp-rhythm" min="1" max="5" value="4" style="padding:0;accent-color:var(--orange)"></div>
+              <div class="field" style="margin-top:10px"><label>Musical expression <span class="muted" id="out-expression">4</span>/5</label><input type="range" id="rp-expression" min="1" max="5" value="4" style="padding:0;accent-color:var(--orange)"></div>
+            </div>
+
+            <div class="field" style="margin-top:12px"><label for="rp-feedback">Teacher feedback</label><textarea id="rp-feedback" placeholder="What went well this quarter…">A strong quarter with real progress in reading and confidence. The Grade 3 repertoire is nearly performance-ready and practice has been remarkably consistent.</textarea></div>
+            <div class="field" style="margin-top:10px"><label for="rp-improve">Areas requiring improvement</label><textarea id="rp-improve" style="min-height:70px">Evenness in scale passages; keeping the left hand quieter than the melody.</textarea></div>
+            <div class="field" style="margin-top:10px"><label for="rp-goals">Next-quarter goals (one per line)</label><textarea id="rp-goals" style="min-height:80px">Complete Grade 3 pieces to performance standard
+Two-octave scales in C, G and F at 72 bpm
+Perform at the Winter Recital on 7 December</textarea></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Generate report card</button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Preview</h2><span class="hint" id="preview-hint">Not generated yet</span></div>
+          <div id="report-preview"><p class="empty-note">Fill in the assessment on the left and generate a report card to preview it here.</p></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Published report cards</h2><span class="hint">Quarter 3 · 2026</span></div>
+        <div class="table-wrap"><table class="data" id="published-reports"></table></div>
+      </div>
+    </section>
+
+    <!-- HOMEWORK -->
+    <section class="view" id="view-homework">
+      <div class="panel">
+        <div class="panel-head"><h2>Homework monitoring</h2><span class="hint">This week</span></div>
+        <div class="table-wrap"><table class="data" id="hw-monitor"></table></div>
+        <p class="form-note">Students below 50% completion are flagged to their teacher for a check-in call.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Assign homework</h2></div>
+          <form id="assign-form">
+            <div class="field"><label for="as-student">Student</label><select id="as-student"></select></div>
+            <div class="field" style="margin-top:10px"><label for="as-title">Task</label><input id="as-title" required placeholder="e.g. Minuet in G — bars 17–32"></div>
+            <div class="field" style="margin-top:10px"><label for="as-due">Due date</label><input id="as-due" type="date" required></div>
+            <div class="field" style="margin-top:10px"><label for="as-note">Instructions</label><textarea id="as-note" style="min-height:70px" placeholder="Slow practice, hands separately…"></textarea></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Assign task</button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Assigned this week</h2></div>
+          <div class="mini-list" id="assigned-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="view" id="view-library">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:20px;align-items:start" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Upload learning material</h2></div>
+          <form id="lib-form">
+            <div class="field"><label for="lib-title">Title</label><input id="lib-title" required placeholder="e.g. Grade 4 scales pack"></div>
+            <div class="field" style="margin-top:10px"><label for="lib-type">Type</label>
+              <select id="lib-type"><option>PDF</option><option>Video</option><option>Audio</option><option>Worksheet</option></select></div>
+            <div class="field" style="margin-top:10px"><label for="lib-cat">Category</label>
+              <select id="lib-cat"><option>Beginner piano</option><option>Music theory</option><option>Sheet music</option><option>Scales &amp; arpeggios</option><option>Classical</option><option>Sight-reading</option><option>Technique</option><option>Video lessons</option></select></div>
+            <div class="field" style="margin-top:10px"><label for="lib-level">Level</label>
+              <select id="lib-level"><option>All levels</option><option>Beginner</option><option>Grade 1–3</option><option>Grade 4–5</option><option>Grade 6–8</option></select></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Add to library</button>
+          </form>
+          <p class="form-note">File uploads are not connected in this demo — the material is added to the library list.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Materials</h2><span class="hint" id="lib-count">186 resources</span></div>
+          <div class="table-wrap"><table class="data" id="admin-library"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="view" id="view-announcements">
+      <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:20px;align-items:start" class="overview-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Compose announcement</h2></div>
+          <form id="ann-form">
+            <div class="field"><label for="ann-title">Title</label><input id="ann-title" required placeholder="e.g. Recital rehearsal schedule"></div>
+            <div class="field" style="margin-top:10px"><label for="ann-audience">Audience</label>
+              <select id="ann-audience"><option>All parents</option><option>All students</option><option>Grade 3 parents</option><option>Online students</option></select></div>
+            <div class="field" style="margin-top:10px"><label for="ann-body">Message</label><textarea id="ann-body" required placeholder="Write the announcement…"></textarea></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit">Publish announcement</button>
+          </form>
+          <p class="form-note">Published announcements appear in the portal and, in production, are emailed and sent on WhatsApp.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Published</h2><span class="hint">Most recent first</span></div>
+          <div class="mini-list" id="announcement-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="admin-toast" class="form-status" hidden style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99;box-shadow:var(--shadow)"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/admin.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
