@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enrol — Admission &amp; Free Trial Class | SriKeys Academy</title>
+<meta name="description" content="Enrol at SriKeys Academy of Music. Book a free trial piano, keyboard or music theory class — online or at our Chennai studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.webp">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="SriKeys Academy home">
+      <img src="assets/img/logo.webp" alt="SriKeys Academy of Music logo">
+      <span class="brand-text"><strong>SriKeys</strong><span>Academy of Music</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="faculty.html">Faculty</a>
+      <a href="student-corner.html">Student Corner</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--ghost btn--sm" href="portal.html">Student Login</a>
+      <a class="btn btn--primary btn--sm" href="enrol.html">Enrol Now</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a><span>/</span>Enrol</p>
+    <span class="eyebrow">Admissions open · 2026–27</span>
+    <h1>Book a free trial class.</h1>
+    <p class="lead">Twenty minutes with a SriKeys teacher, a conversation about goals, and an honest recommendation. No fee, no obligation, no instrument required.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split" style="align-items:start">
+    <div class="reveal">
+      <form class="form-card" data-enquiry="enrol" novalidate>
+        <h2 style="font-size:1.5rem">Admission enquiry</h2>
+        <p class="small muted" style="margin-bottom:20px">Fields marked * are required. We reply within one working day.</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="studentName">Student name *</label>
+            <input id="studentName" name="studentName" required placeholder="Full name">
+          </div>
+          <div class="field">
+            <label for="age">Student age *</label>
+            <input id="age" name="age" type="number" min="3" max="99" required placeholder="e.g. 8">
+          </div>
+          <div class="field">
+            <label for="parentName">Parent / guardian name</label>
+            <input id="parentName" name="parentName" placeholder="If the student is a minor">
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp *</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+91 98400 12345">
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="course">Course *</label>
+            <select id="course" name="course" required>
+              <option value="">Select a course</option>
+              <option>Piano</option>
+              <option>Keyboard</option>
+              <option>Music Theory</option>
+              <option>Little Keysers (ages 4–6)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="level">Current level</label>
+            <select id="level" name="level">
+              <option>Complete beginner</option>
+              <option>Beginner (under 1 year)</option>
+              <option>Grade 1–3</option>
+              <option>Grade 4–5</option>
+              <option>Grade 6–8</option>
+              <option>Adult returner</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="format">Lesson format *</label>
+            <select id="format" name="format" required>
+              <option>Online (live video)</option>
+              <option>In studio — Adyar, Chennai</option>
+              <option>Either — advise me</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="preferred">Preferred days / times</label>
+            <input id="preferred" name="preferred" placeholder="e.g. weekday evenings, Saturday morning">
+          </div>
+          <div class="field">
+            <label for="start">Preferred start</label>
+            <select id="start" name="start">
+              <option>As soon as possible</option>
+              <option>Next month</option>
+              <option>After the school term</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="message">Anything we should know?</label>
+            <textarea id="message" name="message" placeholder="Previous lessons, instruments at home, learning needs, questions…"></textarea>
+          </div>
+          <div class="field field--full">
+            <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500">
+              <input type="checkbox" name="consent" required style="width:auto;margin-top:3px;accent-color:var(--orange)">
+              <span class="small">I agree to be contacted by SriKeys Academy about this enquiry.</span>
+            </label>
+          </div>
+        </div>
+        <button class="btn btn--primary btn--block mt-2" type="submit">Submit enquiry &amp; request trial</button>
+        <p class="form-status" hidden></p>
+        <p class="form-note">This form records your enquiry in this browser and gives you a ready-made WhatsApp message. In production it would connect to the academy's admission system.</p>
+      </form>
+    </div>
+
+    <aside class="reveal">
+      <div class="panel">
+        <div class="panel-head"><h3>What happens next</h3></div>
+        <div class="mini-list">
+          <div class="mini-row">
+            <div class="date-chip"><strong>1</strong><span>Day</span></div>
+            <div class="mini-body"><strong>We call you</strong><span>A short conversation about age, goals and schedule.</span></div>
+          </div>
+          <div class="mini-row">
+            <div class="date-chip"><strong>2</strong><span>Trial</span></div>
+            <div class="mini-body"><strong>Free 20-minute class</strong><span>Online or at the studio with a teacher.</span></div>
+          </div>
+          <div class="mini-row">
+            <div class="date-chip"><strong>3</strong><span>Plan</span></div>
+            <div class="mini-body"><strong>A written learning plan</strong><span>Course, teacher, weekly slot and fee.</span></div>
+          </div>
+          <div class="mini-row">
+            <div class="date-chip"><strong>4</strong><span>Start</span></div>
+            <div class="mini-body"><strong>First lesson</strong><span>Portal access for parents the same day.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="background:linear-gradient(150deg,#fdeccb,#fffaf0);border-color:#f0d9b6">
+        <h3 style="font-size:1.05rem">Prefer to talk?</h3>
+        <p class="small" style="color:var(--ink-soft)">Call or WhatsApp us — we will answer honestly, even if the answer is that we are not the right fit.</p>
+        <p style="margin:12px 0 0"><a href="tel:+919840012345"><strong>+91 98400 12345</strong></a><br><a href="mailto:hello@srikeys.com">hello@srikeys.com</a></p>
+        <a class="btn btn--ghost btn--block mt-2" href="https://wa.me/919840012345?text=Hello%20SriKeys!%20I%27d%20like%20to%20book%20a%20free%20trial%20class." target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Common questions</h3></div>
+        <div class="faq">
+          <details><summary>Is the trial really free?</summary><p>Yes — a full 20-minute lesson, no card details and no obligation to continue.</p></details>
+          <details><summary>Do we need an instrument first?</summary><p>Not for the trial. For lessons we recommend a 61-key touch-sensitive keyboard as a minimum; we will advise on models.</p></details>
+          <details><summary>How are fees paid?</summary><p>Monthly, by UPI, bank transfer or card. Invoices and receipts are available in the portal.</p></details>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/img/logo.webp" alt="">
+          <div><strong>SriKeys</strong><span>Academy of Music</span></div>
+        </div>
+        <p>Piano, keyboard and music theory taught with warmth, structure and a little bit of wonder. Online and in Chennai.</p>
+        <div class="socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://wa.me/919840012345" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Students</h4>
+        <ul class="footer-links">
+          <li><a href="student-corner.html">Student corner</a></li>
+          <li><a href="portal.html">Student portal</a></li>
+          <li><a href="library.html">Music library</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="enrol.html">Enrol</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit us</h4>
+        <p style="margin-bottom:10px">14, Sardar Patel Road, Adyar<br>Chennai 600020, Tamil Nadu</p>
+        <p style="margin-bottom:14px"><a href="tel:+919840012345" style="color:#f0d9be">+91 98400 12345</a><br><a href="mailto:hello@srikeys.com" style="color:#f0d9be">hello@srikeys.com</a></p>
+        <a class="btn btn--amber btn--sm" href="contact.html">Enquire now</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> SriKeys Academy of Music. All rights reserved.</span>
+      <span>ABRSM &amp; Trinity College London graded pathways</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919840012345?text=Hello%20SriKeys!%20I%27d%20like%20to%20know%20more%20about%20classes." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  WhatsApp
+</a>
+
+<script src="assets/js/site.js"></script>
+<script>
+  /* Pre-select the course from ?course=Piano links */
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var course = params.get("course");
+    var select = document.getElementById("course");
+    if (course && select) {
+      Array.from(select.options).forEach(function (opt) {
+        if (opt.value === course) select.value = course;
+      });
+    }
+  })();
+</script>
+</body>
+</html>
